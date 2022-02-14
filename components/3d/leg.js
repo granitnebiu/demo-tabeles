@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useTexture } from "@react-three/drei";
 import { MirroredRepeatWrapping } from "three";
+import CallTextureLeg from "~/callTextureLeg";
 
 export default function Leg({
   length,
@@ -19,15 +20,8 @@ export default function Leg({
   const widthN = width / 100;
   const heightN = height / 100;
 
-  let tex = useTexture(`/tables/textures/hetre.jpg?type=boxappron`);
-
-  if (texture !== null) {
-    // tex = useTexture(`/tables/textures/${texture}.jpg?type=leg`);
-    tex.wrapS = MirroredRepeatWrapping;
-    tex.wrapT = MirroredRepeatWrapping;
-    tex.rotation = Math.PI / 2;
-    tex.repeat.set(heightN, 0.05);
-  }
+  // let tex = useTexture(`/tables/textures/hetre.jpg?type=boxappron`);
+  // let tex= useTexture(texture);
 
   offset[0] += 0.001;
   offset[1] += 0.001;
@@ -64,14 +58,28 @@ export default function Leg({
   const getFabric = fabrics[fabric];
 
   return (
-    <mesh ref={mesh} scale={1} position={getAnchor}>
-      <boxGeometry args={[0.05, heightN, thickness]} />
-      <meshStandardMaterial
-        map={tex}
-        metalness={getFabric.metalness}
-        roughness={getFabric.roughness}
-        color={color}
-      />
+    <mesh>
+      {texture !== null && (
+        <CallTextureLeg
+          texture={texture}
+          getAnchor={getAnchor}
+          heightN={heightN}
+          thickness={thickness}
+          roughness={getFabric.roughness}
+          color={color}
+          metalness={getFabric.metalness}
+        />
+      )}
+      {texture === null && (
+        <mesh ref={mesh} scale={1} position={getAnchor}>
+          <boxGeometry args={[0.05, heightN, thickness]} />
+          <meshStandardMaterial
+            metalness={getFabric.metalness}
+            roughness={getFabric.roughness}
+            color={color}
+          />
+        </mesh>
+      )}
     </mesh>
   );
 }

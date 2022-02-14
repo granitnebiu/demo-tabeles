@@ -218,7 +218,7 @@ export default function TablePage() {
                 textureValue={textureValue}
               />
             )}
-            {tableType === "malaga" && (
+            {/* {tableType === "malaga" && (
               <Malaga
                 lengthValue={lengthValue}
                 widthValue={widthValue}
@@ -233,7 +233,7 @@ export default function TablePage() {
                 heightValue={heightValue}
                 textureValue={textureValue}
               />
-            )}
+            )} */}
             {tableType === "berlin" && (
               <Berlin
                 lengthValue={lengthValue}
@@ -259,22 +259,22 @@ export default function TablePage() {
                 textureValue={textureValue}
               />
             )}
-            {tableType === "malaga_appron" && (
+            {/* {tableType === "malaga_appron" && (
               <MalagaAppron
                 lengthValue={lengthValue}
                 widthValue={widthValue}
                 heightValue={heightValue}
                 textureValue={textureValue}
               />
-            )}
-            {tableType === "lisbon" && (
+            )} */}
+            {/* {tableType === "lisbon" && (
               <Lisbon
                 lengthValue={lengthValue}
                 widthValue={widthValue}
                 heightValue={heightValue}
                 textureValue={textureValue}
               />
-            )}
+            )} */}
             {tableType === "porto" && (
               <Porto
                 lengthValue={lengthValue}

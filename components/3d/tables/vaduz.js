@@ -1,12 +1,7 @@
 import TableTop from "~/3d/tableTop";
 import Leg from "~/3d/leg";
 
-export default function Vaduz({
-  lengthValue,
-  widthValue,
-  heightValue,
-  textureValue,
-}) {
+export default function Vaduz({ lengthValue, widthValue, heightValue, textureValue }) {
   return (
     <>
       <TableTop

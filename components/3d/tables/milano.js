@@ -1,12 +1,7 @@
 import TableTop from "~/3d/tableTop";
 import Leg from "~/3d/leg";
 
-export default function Milano({
-  lengthValue,
-  widthValue,
-  heightValue,
-  textureValue,
-}) {
+export default function Milano({ lengthValue, widthValue, heightValue, textureValue }) {
   return (
     <>
       <TableTop
