@@ -19,6 +19,7 @@ import Vaduz from "~/3d/tables/vaduz";
 import MalagaAppron from "~/3d/tables/malaga_appron";
 import Lisbon from "~/3d/tables/lisbon";
 import Porto from "~/3d/tables/porto";
+import Loader from "~/Loaders";
 
 export default function TablePage() {
   const slug = "test";
@@ -52,7 +53,7 @@ export default function TablePage() {
   const [widthValue, setWidthValue] = useState();
   const [heightValue, setHeightValue] = useState();
   const [textureValue, setTextureValue] = useState();
-
+  const [rotation, setRotation] = useState(true);
   const [referenceActive, setReferenceActive] = useState(true);
 
   /////////////////////Length
@@ -191,12 +192,13 @@ export default function TablePage() {
         </select>
         <p>cm</p> */}
       </div>
-      <div style={{ width: "100%", height: "100vh" }}>
+      {/* style={{ width: "100%", height: "100vh" }} */}
+      <div onClick={() => setRotation(false)} className="canvasSize">
         <Canvas concurrent shadowMa>
           <ambientLight intensity={0.5} color="#fcf7cf" />
           <directionalLight intensity={0.5} color="#fcf7cf" position={[200, 500, -300]} />
 
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loader />}>
             <Environment background={false} files={`/hdri/light.hdr`} />
             {/* <Bowl /> */}
             {/* <Chair /> */}
@@ -293,10 +295,10 @@ export default function TablePage() {
               blur={1}
               far={3}
             />
-            <PerspectiveCamera position={[1, 1, -1]} ref={myCamera} fov={45} makeDefault />
+            <PerspectiveCamera position={[1, 1, 4]} ref={myCamera} fov={45} makeDefault />
             <OrbitControls
               camera={myCamera.current}
-              autoRotate={false}
+              autoRotate={rotation}
               maxDistance={6}
               minDistance={3}
               maxPolarAngle={Math.PI / 2}

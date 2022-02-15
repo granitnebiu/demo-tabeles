@@ -18,3 +18,16 @@ a {
 .manage_size {
   display: flex;
 }
+
+.progressBar {
+  display: flex;
+  width: 100%;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvasSize {
+  width: 100%;
+  height: 100vh;
+}
